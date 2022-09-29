@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario vs BolsoLula</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+
+</head>
+<body class="tudo" onload="iniciar()">
+
+    
+        <div id="gameboard">
+            
+
+            <div class="vida">
+                <div class="loader"></div>
+                <div class="vazio"></div>
+                <div class="borda"></div>
+            
+            </div>
+            <center>
+            
+            <div class="inicio">
+                
+
+                <h1 class="titulo"> <br> SUPER MARIO <br><br> VS <br><br> BOLSOLULA</h1>
+                <br><br><br>
+                <button class="jogar" onclick="jogar()">Jogar</button>
+                
+                <br>
+                
+                <br>
+                
+                <img class="mario-inicio" src="/images/mario.gif" alt="Mario">
+                <br>
+                <img class="bolsolula" src="/images/bolsolula.png" alt="BolsoLula">
+                <img class="pipe-inicio" src="/images/pipe-inicio.png" alt="Pipe">
+                
+            </div>
+            
+         </center>
+         
+            <div class="game">
+                
+
+
+              
+                <img class="pipe" src="/images/pipe.png" alt="Pipe">
+
+                <img class="life" src="/images/vida.png" alt="Vida">
+
+                <img class="ferido" src="/images/mario.gif" alt="Ferido">
+                <img class="mario" src="/images/mario.gif" alt="Mario">
+
+                <img class="ciro" src="/images/ciro.png" alt="Ciro">
+
+                <div class="tela sumir"></div>
+                <div class="lowlife sumir"></div>
+
+                <div class="telavida sumir"></div>
+                <button class="reiniciar" onclick="jogarNovamente()">Recomeçar</button>
+
+
+                
+            </div>
+            
+
+        </div>
+   
+
+
+</body>
+</html>

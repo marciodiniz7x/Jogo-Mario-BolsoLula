@@ -1,0 +1,516 @@
+/* |||||||||| GAMEBOARD |||||||||| */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background: black;
+}
+#gameboard {
+    
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 10px solid green;
+    background: url(/images/fundoAnimado2.gif);
+
+    
+    height: 500px;
+    background-size: 100% 100%;
+    
+    color: aliceblue;
+}
+
+.inicio {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    
+    background: url(/images/fundoParado.jpg);
+    
+    height: 500px;
+    background-size: 100% 100%;
+}
+
+
+
+.tela {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    bottom: 0px;
+
+    position: absolute;
+    
+    opacity: 50%;
+    margin: 0;
+    background: #ff2744;
+
+}
+
+.lowlife {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    bottom: 0px;
+
+    position: absolute;
+    
+    opacity: 50%;
+    margin: 0;
+    background: #ff2744;
+
+    animation: pulse 500ms infinite linear;
+}
+
+
+.telavida {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    bottom: 0px;
+
+    position: absolute;
+    
+    opacity: 50%;
+    margin: 0;
+    
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
+    background-size: 500%;
+
+    animation: animarLoader 20s linear infinite;
+
+    transition-duration: 700ms;
+}
+
+.titulo {
+    font-family: 'Pixel-Art';
+    font-weight: lighter;
+
+}
+
+.mario-inicio {
+    width: 120px;
+    bottom:190px;
+    right: 300px;
+    position:relative;
+}
+.bolsolula {
+    width: 420px;
+    position: relative;
+    left: 340px;
+    bottom: 280px;
+    
+}
+.pipe-inicio {
+    position: relative;
+    width: 120px;
+    bottom:280px;
+    right: 213px;
+    animation: pipe-inicio 3s infinite linear;
+
+}
+.sumir {
+    visibility: hidden;
+}
+
+
+/* |||||||||| ELEMENTOS/IMAGENS |||||||||| */
+
+.mario {
+
+    width: 150px;
+    position:absolute;
+    left: 0px;
+    bottom: 0px;
+}
+.ferido {
+
+    filter: blur(5px) saturate(3);
+    width: 140px;
+    position:absolute;
+    left: 0px;
+    bottom: 0px;
+    animation: ferido 600ms infinite linear;
+}
+
+
+.jump {
+    animation: jump 600ms ease-out;
+}
+
+.jumpferido {
+
+    animation: jumpferido 600ms ease-out;
+}
+
+.pipe {
+
+    height: 180px;
+ 
+    position:absolute;
+    bottom: 0;
+    width: 180px;
+    animation: pipe-animation 2.5s infinite linear;
+}
+
+.nuvens {
+    position: absolute;
+    bottom: 180px;
+    width: 550px;
+    animation: nuvem-anim 20s infinite linear;
+}
+
+.ciro {
+    position: absolute;
+    bottom: 380px;
+    width: 80px;
+    animation: ciro-animation 15s infinite linear;
+}
+
+.life {
+    
+    position: absolute;
+    bottom: 180px;
+    width: 80px;
+    animation: vida-animation 20s infinite linear;
+    
+}
+
+
+/* |||||||||| BOTÕES |||||||||| */
+
+.jogar{
+    font-size: 17px;
+    width: 200px;
+    height: 80px;
+    border: none;
+    border-radius: 20px;
+    background: #1f9625;
+    color: aliceblue;
+    font-weight: bold;
+    
+   
+}
+.jogar:hover {
+    background: rgb(17, 86, 133);
+    cursor: pointer;
+   
+}
+
+.reiniciar {
+    font-size: 17px;
+    width: 200px;
+    height: 80px;
+    border: none;
+    border-radius: 20px;
+    background: #1f9625;
+    color: aliceblue;
+    font-weight: bold;
+
+    position: absolute;
+    
+    right: 41%;
+    bottom: 100px;
+    
+
+}
+.jogar:hover {
+    background: rgb(17, 86, 133);
+    cursor: pointer;
+    
+}
+
+.reiniciar:hover {
+    background: rgb(17, 86, 133);
+    cursor: pointer;
+}
+
+
+
+/* |||||||||| BARRA LOADING |||||||||| */
+
+.borda {
+    position: absolute;
+    border: 1px solid white;
+    width: 501px;
+    height: 53px;
+}
+
+.loader {
+    
+    align-items: left;
+    position: absolute;
+    width: 500px;
+    height: 30px;
+    background: #fff;
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #000500);
+}
+
+.loader::before {
+    content: '\00a0 VIDA'; /* \00a0 adiciona um espaço antes ou depois do texto */
+    font-family: 'arial';
+    font-weight: bolder;
+    font-size: 40px;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
+    background-size: 500%;
+
+    animation: animarLoader 20s linear infinite;
+    
+}
+
+.loader::after {
+    content: 'VIDA';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
+    background-size: 500%;
+    filter: blur(15px);
+
+    animation: animarLoader 20s linear infinite;
+    
+}
+
+.morto {
+    content: 'MORTO';
+    color: red;
+    font-family: 'arial';
+    font-weight: bolder;
+    font-size: 40px;
+    align-items: left;
+    position: absolute;
+    width: 500px;
+    height: 30px;
+    
+    -webkit-box-reflect: below 0px linear-gradient(transparent, #000500);
+}
+
+.morto::before {
+    content: '\00a0 MORTO';
+    color: red;
+    font-family: 'arial';
+    font-weight: bolder;
+    font-size: 40px;
+    align-items: left;
+    position: absolute;
+    width: 500px;
+    height: 30px;
+    
+   
+}
+
+.morto::after {
+    content: ' \00a0 MORTO';
+    color: red;
+    font-family: 'arial';
+    font-weight: bolder;
+    font-size: 40px;
+    align-items: left;
+    position: absolute;
+    width: 500px;
+    height: 30px;
+    
+}
+
+/* |||||||||| ANIMAÇÕES |||||||||| */
+
+@keyframes pipe-inicio {
+    0% {
+        right: 113px;
+    }
+
+    50% {
+        right: 313px;
+    }
+
+    100% {
+        right: 113px;
+    }
+}
+
+@keyframes nuvem-anim {
+    from {
+        right: -550px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes pipe-animation {
+    from {
+        right: -220px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes ciro-animation {
+    0% {
+        right: -600px;
+    }
+
+    40% {
+        right: 10%;
+    }
+
+    50% {
+        right: 15%;
+    }
+
+    60% {
+        right: 10%;
+    }
+
+    100% {
+        right: -600px;
+    }
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0px;
+    }
+
+    40% {
+        bottom: 280px;
+    }
+
+    50% {
+        bottom: 280px;
+    }
+
+    60% {
+        bottom: 280px;
+    }
+
+    100% {
+        bottom: 0px;
+    }
+}
+
+@keyframes jumpferido {
+    0% {
+        left: 0px;
+        bottom: 0px;
+        opacity: 0%;
+    }
+
+    20% {
+
+        opacity: 100%;
+
+    }
+
+    40% {
+        left: -30px;
+        bottom: 280px;
+        opacity: 0%;
+    }
+
+    50% {
+        left: -30px;
+        bottom: 280px;
+        opacity: 100%;
+    }
+
+    60% {
+        left: -30px;
+        bottom: 280px;
+        opacity: 0%;
+    }
+
+    100% {
+        left: 0px;
+        bottom: 0px;
+        opacity: 100%;
+    }
+}
+
+@keyframes animarLoader {
+    0% {
+        background-position: 0 0;
+    }
+
+    0% {
+        background-position: 500% 0;
+    }
+}
+
+@keyframes ferido {
+
+    0% {
+        left: 0px;
+        opacity: 0%;
+    }
+
+    20% {
+        opacity: 100%;
+    }
+
+    40% {
+        left: -30px;
+        opacity: 0%;
+    }
+
+    50% {
+
+        left: -30px;
+        opacity: 100%;
+    }
+
+    60% {
+        left: -30px;
+        opacity: 0%;
+    }
+
+    100% {
+        left: 0px;
+        opacity: 100%;
+    }
+
+}
+
+@keyframes vida-animation {
+    from {
+        right: -5550px;
+    }
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes animafundo {
+    from {
+        right: -100%;
+    }
+
+    to {
+        right: 100%;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 10%;
+    }
+
+    50% {
+        opacity: 30%;
+    }
+
+    100% {
+        opacity: 10%;
+    }
+}
