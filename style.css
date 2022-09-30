@@ -249,36 +249,39 @@ body {
     align-items: left;
     position: absolute;
     width: 500px;
-    height: 30px;
+    height: 52px;
     background: #fff;
-    -webkit-box-reflect: below 0px linear-gradient(transparent, #000500);
+    
 }
 
 .loader::before {
-    content: '\00a0 VIDA'; /* \00a0 adiciona um espaço antes ou depois do texto */
+    content: '';
     font-family: 'arial';
     font-weight: bolder;
     font-size: 40px;
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
+    background: linear-gradient(90deg, #3dd307, #47ee37, #00ff00, #08be4e, #2a9b08, #3cc21b, #00ff00, #18bb26, #3dd337);
     background-size: 500%;
 
     animation: animarLoader 20s linear infinite;
     
+    
 }
-
-.loader::after {
-    content: 'VIDA';
+.loaderColor {
+    content: '';
+    width: 400px;
+    height: 52px;
     position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
+    
+    background: yellowgreen;
     background-size: 500%;
-    filter: blur(15px);
 
     animation: animarLoader 20s linear infinite;
-    
+
+    transition: 700ms;
 }
+
 
 .morto {
     content: 'MORTO';

@@ -30,9 +30,7 @@ function iniciar() {
     ciro.style.animation = 'none';
     ciro.style.right = '-440px';
 
-    gameboard.style.background.src = 'images/fundo2.jgp'
-
-
+    gameboard.style.background.src = 'images/fundo2.jgp'    
 
 }
 
@@ -101,24 +99,29 @@ const loop = setInterval(() => {
     switch (contador) {
         case 0:
             loader.style.width = '500px';
+            loader.classList.replace('loaderColor', 'loader');
             break;
         
         case 100:
+            loader.classList.replace('loader', 'loaderColor');
             loader.style.width = '400px';
             break;
     
         case 200:
             loader.style.width = '300px';
+            loader.style.background = 'yellow';
             break;
     
         case 300:
             loader.style.width = '200px';
-            lowlife.classList.add('sumir')
+            loader.style.background = 'orange';
+            lowlife.classList.add('sumir');
             break;
     
         case 400:
             loader.style.width = '100px';
-            lowlife.classList.remove('sumir')
+            loader.style.background = 'red';
+            lowlife.classList.remove('sumir');
 
             break;
     
@@ -149,7 +152,7 @@ const loop = setInterval(() => {
             gameboard.style.backgroundSize = '100% 100%'
     
             reiniciar.classList.remove('sumir');
-            loader.classList.replace('loader','morto')
+            loader.classList.replace('loaderColor','morto')
     
             ferido.style.visibility = 'hidden';
     
