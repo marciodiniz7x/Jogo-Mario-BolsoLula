@@ -16,7 +16,7 @@ body {
     overflow: hidden;
     position: relative;
     border-bottom: 10px solid green;
-    background: url(/images/fundoAnimado2.gif);
+    background: url(images/fundoAnimado2.gif);
 
     
     height: 500px;
@@ -30,7 +30,7 @@ body {
     overflow: hidden;
     position: relative;
     
-    background: url(/images/fundoParado.jpg);
+    background: url(images/fundoParado.jpg);
     
     height: 500px;
     background-size: 100% 100%;
