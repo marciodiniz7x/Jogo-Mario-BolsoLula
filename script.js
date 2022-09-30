@@ -33,7 +33,7 @@ function iniciar() {
     ciro.style.animation = 'none';
     ciro.style.right = '-440px';
 
-    gameboard.style.background.src = '/images/fundo2.jgp'
+    gameboard.style.background.src = 'images/fundo2.jgp'
 
 
 
@@ -138,7 +138,7 @@ const loop = setInterval(() => {
             mario.style.animation = 'none';
             mario.style.bottom = `${marioPosition}px`;
     
-            mario.src = "/images/game-over.png";
+            mario.src = "images/game-over.png";
             mario.style.width = '75px';
             mario.style.marginLeft = '50px';
 
@@ -149,7 +149,7 @@ const loop = setInterval(() => {
             tela.style.opacity = '30%';
             lowlife.classList.add('sumir')
 
-            gameboard.style.background = 'url(/images/fundoParado.jpg)';
+            gameboard.style.background = 'url(images/fundoParado.jpg)';
             gameboard.style.height = '500px';
             gameboard.style.backgroundSize = '100% 100%'
     
