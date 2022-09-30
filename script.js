@@ -23,9 +23,6 @@ const loader = document.querySelector('.loader');
 const inicio = document.querySelector('.inicio');
 
 function iniciar() {
-    game.classList.add('sumir');
-    reiniciar.classList.add('sumir');
-    vida.classList.add('sumir');
 
     pipe.style.animation = 'none';
     pipe.style.right = '-220px';
@@ -48,10 +45,8 @@ function jogar() {
     pipe.style.animation = '';
     ciro.style.animation = '';
     game.classList.remove('sumir');
-    vida.classList.remove('sumir')
+    vida.classList.remove('sumir');
     inicio.classList.add('sumir');
-
-
 }
 
 function jogarNovamente() {
