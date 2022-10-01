@@ -6,7 +6,8 @@ let pipe = document.querySelector('.pipe');
 let ciro = document.querySelector('.ciro');
 let ferido = document.querySelector('.ferido');
 let life = document.querySelector('.life');
-
+let bomb = document.querySelector('.bomb');
+let mensagemFinal = document.querySelector('.mensagemFinal')
 let gameboard = document.querySelector('#gameboard')
 
 const tela = document.querySelector('.tela');
@@ -19,6 +20,13 @@ const reiniciar = document.querySelector('.reiniciar');
 
 const vida = document.querySelector('.vida');
 const loader = document.querySelector('.loader');
+
+const explosion = document.querySelector('.explosion')
+
+
+const menosVida = document.querySelector('.menosVida');
+const maisVida = document.querySelector('.maisVida') 
+
 
 const inicio = document.querySelector('.inicio');
 
@@ -39,12 +47,69 @@ function iniciar() {
 ///////////////////////////////////
 // |||||||||| BOTÕES |||||||||| //
 
+
+
 function jogar() {
+    
+    mensagemFinal.style.animation = 'none'
+    menosVida.style.animation = 'none';
+    maisVida.style.animation = 'none';
+
+    bomb.style.animation = 'none'
     pipe.style.animation = '';
     ciro.style.animation = '';
     game.classList.remove('sumir');
     vida.classList.remove('sumir');
     inicio.classList.add('sumir');
+
+    // Criei um timeout para que a animação acelere (aumente a dificuldade do jogo) a cada 10 saltos //
+    setTimeout(() => { // Timeout 1 //
+
+        // Antes de acelerar a animação, eu precisei cancelar ela e reiniciar (após 100ms) para que o pipe não acelerasse no meio da tela, pois ele bugava e teleportava //
+        pipe.style.animation = 'none';
+        setTimeout(() => {
+            pipe.style.animation = '';
+            pipe.style.animationDuration = "2s";
+        }, 100);
+
+            setTimeout(() => {  // // Timeout 2 // //
+                pipe.style.animation = 'none';
+                setTimeout(() => {
+                    pipe.style.animation = '';
+                    pipe.style.animationDuration = "1.5s";
+                }, 100);
+ 
+                    setTimeout(() => { // // // Timeout 3 // // // 
+                        pipe.style.animation = 'none';
+                        setTimeout(() => {
+                            pipe.style.animation = '';
+                            pipe.style.animationDuration = "1s";    
+                        }, 100);
+
+                            setTimeout(() => {
+                                
+                                    setTimeout(() => {
+                                        pipe.style.animation = 'none';
+                                        mensagemFinal.style.animation = '';
+                                        mensagemFinal.classList.remove('sumir');
+                                            setTimeout(() => {
+                                                pipe.style.animation = '';
+                                                pipe.style.animationDuration = '800ms'
+                                                bomb.style.animation = '';
+                                                bomb.classList.remove('sumir');
+                                            }, 7500);
+                                    }, 100);
+                            }, 10000);
+                
+                        
+                    }, 1500); // // // Timeout 3 // // // 
+        
+                
+            }, 2000);  // // Tineout 2 // //
+
+        
+    }, 2500); // Timeout 1 //
+
 }
 
 function jogarNovamente() {
@@ -52,18 +117,24 @@ function jogarNovamente() {
 }
 
 
-/////////////// EM JOGO ///////////////
+/////////// Gameplay / PULAR ///////////
 ///////////////////////////////////////
 
-function jump() {
-    mario.classList.add('jump');
-    ferido.classList.add('jumpferido');
-    setTimeout(() => {
-        mario.classList.remove('jump');
-        ferido.classList.remove('jumpferido');
-        
-    }, 600);
-}
+let pulou = false;
+
+document.addEventListener('keydown', function() {
+    if (pulou === false) {
+        pulou = true;
+        mario.classList.add('jump');
+        ferido.classList.add('jumpferido');
+        setTimeout(() => {
+            pulou = false;
+            mario.classList.remove('jump');
+            ferido.classList.remove('jumpferido');
+            
+        }, 500);
+    }
+});
 
 let contador = 0;
 
@@ -80,6 +151,8 @@ const loop = setInterval(() => {
     if (pipePosition <= 60 && pipePosition > -40 && marioPosition < 170 && contador < 500) {
 
         tela.classList.remove('sumir');
+        menosVida.classList.remove('sumir');
+        menosVida.style.animation = '';
         
         setTimeout(() => {
             tela.classList.add('sumir');
@@ -90,6 +163,8 @@ const loop = setInterval(() => {
         mario.classList.remove('jump');
         setTimeout(() => {
             mario.classList.add('mario')
+            menosVida.classList.add('sumir')
+            menosVida.style.animation = 'none';
         }, 600);
 
         contador += 100;
@@ -142,7 +217,8 @@ const loop = setInterval(() => {
 
             life.style.left = '-2000px';
             life.style.animation = 'none';
-        
+            
+            bomb.classList.add('sumir')
             tela.classList.remove('sumir');
             tela.style.opacity = '30%';
             lowlife.classList.add('sumir')
@@ -161,8 +237,6 @@ const loop = setInterval(() => {
         default:
             break;
     }
-
-
     
 }, 10);
 
@@ -178,6 +252,8 @@ const vidaLoop = setInterval(() => {
     if (lifePosition <= 100 && lifePosition > 0 && marioPosition > 100 && contador >= 100) {
 
         telavida.classList.remove('sumir');
+        maisVida.classList.remove('sumir');
+        maisVida.style.animation = '';
     
         setTimeout(() => {
             telavida.classList.add('sumir');
@@ -188,6 +264,8 @@ const vidaLoop = setInterval(() => {
 
         setTimeout(() => {
             life.classList.add('life')
+            maisVida.classList.add('sumir');
+            maisVida.style.animation = 'none';
         }, 600);
     }
 
@@ -195,4 +273,29 @@ const vidaLoop = setInterval(() => {
     
 }, 10);
 
-document.addEventListener('keydown', jump);
+// COLISÃO BOMBA //
+//////////////////
+
+const bombLoop = setInterval(() => {
+
+    const bombPosition = +window.getComputedStyle(bomb).left.replace('px','');
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+
+    if (bombPosition <= 100 && bombPosition > 0 && marioPosition > 80) {
+
+        bomb.classList.add('sumir');
+        explosion.classList.remove('sumir');
+        explosion.style.left = `${bombPosition}`;
+        bomb.style.animation = 'none';;
+        
+
+        setTimeout(() => {
+            explosion.classList.add('sumir');
+        }, 600);
+
+        contador = 500;
+    }
+
+    
+    
+}, 10);
