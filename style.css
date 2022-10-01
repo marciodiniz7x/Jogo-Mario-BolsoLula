@@ -289,9 +289,9 @@ body {
 
 .borda {
     position: absolute;
-    border: 1px solid white;
-    width: 501px;
-    height: 53px;
+    background-image: url(images/bordaVida.png);
+    width: 570px;
+    height: 146px;
 }
 
 .loader {
@@ -313,7 +313,6 @@ body {
     inset: 0;
     background: linear-gradient(90deg, #3dd307, #47ee37, #00ff00, #08be4e, #2a9b08, #3cc21b, #00ff00, #18bb26, #3dd337);
     background-size: 500%;
-
     animation: animarLoader 20s linear infinite;
     
     
@@ -335,7 +334,7 @@ body {
 
 .morto {
     content: 'MORTO';
-    color: red;
+    color: #ff0000;
     font-family: 'arial';
     font-weight: bolder;
     font-size: 40px;
