@@ -45,9 +45,9 @@ function iniciar() {
 
 
 ///////////////////////////////////
-// |||||||||| BOTÕES |||||||||| //
+// ||||| CLICANDO EM JOGAR ||||| //
 
-
+let contador = 0;
 
 function jogar() {
     
@@ -62,7 +62,7 @@ function jogar() {
     vida.classList.remove('sumir');
     inicio.classList.add('sumir');
 
-    // Criei um timeout para que a animação acelere (aumente a dificuldade do jogo) a cada 10 saltos //
+    // Criei um timeout para que a animação acelere (e aumente a dificuldade do jogo) a cada 10 saltos //
     setTimeout(() => { // Timeout 1 //
 
         // Antes de acelerar a animação, eu precisei cancelar ela e reiniciar (após 100ms) para que o pipe não acelerasse no meio da tela, pois ele bugava e teleportava //
@@ -78,7 +78,7 @@ function jogar() {
                     pipe.style.animation = '';
                     pipe.style.animationDuration = "1.5s";
                 }, 100);
- 
+
                     setTimeout(() => { // // // Timeout 3 // // // 
                         pipe.style.animation = 'none';
                         setTimeout(() => {
@@ -89,16 +89,23 @@ function jogar() {
                             setTimeout(() => {
                                 
                                     setTimeout(() => {
-                                        pipe.style.animation = 'none';
-                                        mensagemFinal.style.animation = '';
-                                        mensagemFinal.classList.remove('sumir');
+                                        // Criei um if no contador para evitar que as animações do timeout aconteçam depois que o jogo acabou (contador = 500)
+                                        if (contador < 500) {
+                                            pipe.style.animation = 'none';
+                                            mensagemFinal.style.animation = '';
+                                            mensagemFinal.classList.remove('sumir');
                                             setTimeout(() => {
                                                 pipe.style.animation = '';
                                                 pipe.style.animationDuration = '800ms'
                                                 bomb.style.animation = '';
                                                 bomb.classList.remove('sumir');
                                             }, 7500);
+
+                                        }
+                                        
                                     }, 100);
+
+
                             }, 10000);
                 
                         
@@ -109,7 +116,6 @@ function jogar() {
 
         
     }, 25000); // Timeout 1 //
-
 }
 
 function jogarNovamente() {
@@ -135,8 +141,6 @@ document.addEventListener('keydown', function() {
         }, 500);
     }
 });
-
-let contador = 0;
 
 
 // COLISÃO PIPE //
