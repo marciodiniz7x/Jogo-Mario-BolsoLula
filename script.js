@@ -138,7 +138,7 @@ document.addEventListener('keydown', function() {
             mario.classList.remove('jump');
             ferido.classList.remove('jumpferido');
             
-        }, 500);
+        }, 550);
     }
 });
 
