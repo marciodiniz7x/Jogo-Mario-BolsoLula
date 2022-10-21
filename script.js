@@ -23,10 +23,8 @@ const loader = document.querySelector('.loader');
 
 const explosion = document.querySelector('.explosion')
 
-
 const menosVida = document.querySelector('.menosVida');
 const maisVida = document.querySelector('.maisVida') 
-
 
 const inicio = document.querySelector('.inicio');
 
@@ -39,9 +37,8 @@ function iniciar() {
     ciro.style.right = '-440px';
 
     gameboard.style.background.src = 'images/fundo2.jgp'    
-
+    
 }
-
 
 
 ///////////////////////////////////
@@ -273,8 +270,7 @@ const vidaLoop = setInterval(() => {
             maisVida.style.animation = 'none';
         }, 600);
     }
-
-    
+  
     
 }, 10);
 
@@ -300,7 +296,5 @@ const bombLoop = setInterval(() => {
 
         contador = 500;
     }
-
-    
     
 }, 10);
