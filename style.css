@@ -178,10 +178,13 @@ body {
 
 .pipe {
     height: 180px;
- 
+    right: -220px;
     position:absolute;
     bottom: 0;
     width: 180px;
+}
+
+.pipeAnimado {
     animation: pipe-animation 2500ms infinite linear;
 }
 

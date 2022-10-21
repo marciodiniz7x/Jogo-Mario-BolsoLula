@@ -32,8 +32,8 @@ const inicio = document.querySelector('.inicio');
 
 function iniciar() {
 
-    pipe.style.animation = 'none';
-    pipe.style.right = '-220px';
+    // pipe.style.animation = 'none';
+    // pipe.style.right = '-220px';
 
     ciro.style.animation = 'none';
     ciro.style.right = '-440px';
@@ -56,11 +56,12 @@ function jogar() {
     maisVida.style.animation = 'none';
 
     bomb.style.animation = 'none'
-    pipe.style.animation = '';
+    
     ciro.style.animation = '';
     game.classList.remove('sumir');
     vida.classList.remove('sumir');
     inicio.classList.add('sumir');
+    pipe.classList.add('pipeAnimado');
 
     // Criei um timeout para que a animação acelere (e aumente a dificuldade do jogo) a cada 10 saltos //
     setTimeout(() => { // Timeout 1 //
@@ -209,7 +210,7 @@ const loop = setInterval(() => {
     
             mario.classList.add('mario');
     
-            pipe.style.animation = 'none';
+            pipe.classList.remove('pipeAnimado');
             pipe.style.left = `${pipePosition}px`;
     
             mario.style.animation = 'none';
